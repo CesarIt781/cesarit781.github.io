@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="Portafolio profesional de César Miguel Ángel de la Cruz: redes, soporte de TI y práctica de ciberseguridad.">
+  <title>César de la Cruz — Redes y Ciberseguridad</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4f6fb;
+      --muted: #a9b2c4;
+      --night: #080b12;
+      --panel: #101725;
+      --line: rgba(255,255,255,.12);
+      --cyan: #7ce7ea;
+      --blue: #8ba9ff;
+      --paper: #f4f6f7;
+      --dark-ink: #15202d;
+      --dark-muted: #586676;
+      --max: 1240px;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--night); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); background: rgba(8,11,18,.76); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -.03em; white-space: nowrap; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(124,231,234,.5); border-radius: 11px; color: var(--cyan); font-size: 13px; letter-spacing: -.08em; }
+    .nav-links { display: flex; gap: clamp(18px, 3vw, 38px); align-items: center; color: #c9d0dd; font-size: 14px; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--cyan); }
+    .nav-contact { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 9px 17px; }
+    .menu-toggle { display: none; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+    .hero { min-height: 690px; display: grid; align-items: center; position: relative; overflow: hidden; background: radial-gradient(ellipse at 72% 38%, rgba(25,75,111,.38), transparent 38%), linear-gradient(140deg,#080b12 25%,#0b1420 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: clamp(32px,6vw,90px); padding-block: 76px 92px; }
+    .eyebrow { color: var(--cyan); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1,h2,h3,p { margin-top: 0; }
+    h1 { margin: 20px 0 22px; max-width: 720px; font-size: clamp(48px,6.6vw,88px); line-height: .99; letter-spacing: -.075em; font-weight: 650; }
+    h1 span { color: #a8bbff; }
+    .hero-copy { max-width: 630px; color: #c2cada; font-size: clamp(18px,2vw,21px); line-height: 1.55; }
+    .hero-meta { margin-top: 25px; color: #98a5b8; font-size: 15px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; padding: 0 21px; font-weight: 650; font-size: 14px; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #071017; background: var(--cyan); }
+    .button-quiet { border: 1px solid rgba(255,255,255,.24); color: #f4f6fb; }
+    .hero-art { position: relative; min-height: 430px; }
+    .hero-photo { position: absolute; inset: 0; overflow: hidden; border-radius: 32px; background: #111c2b; box-shadow: 0 28px 90px rgba(0,0,0,.42); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; opacity: .88; }
+    .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 38%,rgba(4,9,16,.84)); }
+    .photo-caption { position: absolute; z-index: 1; bottom: 26px; left: 28px; right: 28px; display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+    .photo-caption strong { font-size: 17px; display: block; }
+    .photo-caption span { color: #d0d9e7; font-size: 13px; }
+    .photo-index { color: var(--cyan); letter-spacing: .12em; font-size: 12px; }
+    .scroll-note { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); color: #8d9aaf; font-size: 11px; letter-spacing: .17em; text-transform: uppercase; white-space: nowrap; }
+    .intro-band { background: var(--paper); color: var(--dark-ink); padding: 76px 0 78px; }
+    .intro-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; align-items: start; }
+    .intro-band .eyebrow { color: #3d7080; }
+    .intro-title { margin: 4px 0; font-size: clamp(30px,4vw,50px); line-height: 1.08; letter-spacing: -.055em; max-width: 400px; }
+    .intro-text { color: var(--dark-muted); font-size: clamp(17px,1.8vw,20px); line-height: 1.7; max-width: 730px; }
+    .stats { background: #e8edef; color: var(--dark-ink); padding: 24px 0; }
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); }
+    .stat { padding: 6px clamp(12px,3vw,42px); border-left: 1px solid rgba(21,32,45,.14); }
+    .stat:first-child { border-left: 0; padding-left: 0; }
+    .stat strong { display: block; font-size: clamp(21px,3vw,34px); line-height: 1.1; letter-spacing: -.05em; }
+    .stat span { display: block; margin-top: 5px; color: #607080; font-size: 13px; }
+    .story { background: #090e17; padding: 106px 0 100px; }
+    .section-heading { max-width: 720px; margin-bottom: 55px; }
+    .section-heading h2 { margin: 14px 0 13px; font-size: clamp(36px,5vw,60px); line-height: 1.02; letter-spacing: -.06em; }
+    .section-heading p { color: var(--muted); font-size: 18px; max-width: 650px; }
+    .story-layout { display: grid; grid-template-columns: minmax(0,1.02fr) minmax(0,.98fr); gap: clamp(36px,7vw,100px); align-items: start; }
+    .story-visual { position: sticky; top: 104px; height: min(70vh,650px); min-height: 440px; }
+    .visual-frame { position: relative; width: 100%; height: 100%; border: 1px solid rgba(255,255,255,.13); border-radius: 28px; overflow: hidden; background: #111a28; }
+    .visual-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.045); transition: opacity .8s ease, transform 1.1s ease; }
+    .visual-frame img.active { opacity: 1; transform: scale(1); }
+    .visual-frame::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(180deg,transparent,rgba(5,9,16,.88)); pointer-events: none; }
+    .visual-overlay { position: absolute; z-index: 1; inset: auto 25px 24px; }
+    .visual-label { color: var(--cyan); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .visual-title { margin: 7px 0 14px; font-size: clamp(22px,3vw,34px); line-height: 1.1; letter-spacing: -.045em; }
+    .visual-progress { display: flex; gap: 7px; }
+    .progress-segment { height: 3px; flex: 1; background: rgba(255,255,255,.28); border-radius: 5px; transition: background .3s ease; }
+    .progress-segment.active { background: var(--cyan); }
+    .story-steps { display: flex; flex-direction: column; }
+    .story-step { min-height: 64vh; display: flex; flex-direction: column; justify-content: center; padding: 35px 0; border-top: 1px solid var(--line); opacity: .56; transition: opacity .35s ease; }
+    .story-step:first-child { border-top: 0; }
+    .story-step.active { opacity: 1; }
+    .step-number { color: var(--cyan); font-size: 13px; font-weight: 700; letter-spacing: .14em; }
+    .story-step h3 { margin: 12px 0 14px; font-size: clamp(29px,3.4vw,42px); line-height: 1.08; letter-spacing: -.055em; }
+    .story-step p { color: #b8c2d1; font-size: 17px; line-height: 1.7; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip { display: inline-flex; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 6px 11px; color: #d5dcea; font-size: 12px; }
+    .cyber-details { background: #101725; padding: 85px 0 94px; }
+    .cyber-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .cyber-intro { position: sticky; top: 110px; }
+    .cyber-intro h2 { margin: 13px 0 16px; font-size: clamp(36px,4.7vw,57px); line-height: 1.02; letter-spacing: -.06em; }
+    .cyber-intro p { max-width: 430px; color: #aeb9ca; font-size: 17px; }
+    .tool-list { display: grid; gap: 12px; }
+    .tool { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 21px 22px; border: 1px solid rgba(255,255,255,.1); border-radius: 18px; background: rgba(255,255,255,.035); }
+    .tool-mark { width: 46px; height: 46px; display: grid; place-items: center; color: var(--cyan); border: 1px solid rgba(124,231,234,.32); border-radius: 14px; font-size: 12px; font-weight: 750; }
+    .tool h3 { margin: 0 0 5px; font-size: 17px; letter-spacing: -.025em; }
+    .tool p { margin: 0; color: #aeb9ca; font-size: 14px; line-height: 1.6; }
+    .credentials { background: var(--paper); color: var(--dark-ink); padding: 92px 0 100px; }
+    .credentials .eyebrow { color: #3d7080; }
+    .credentials .section-heading p { color: var(--dark-muted); }
+    .credentials-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 70px; }
+    .education-card { border-top: 1px solid rgba(21,32,45,.2); padding-top: 22px; }
+    .education-card h3 { margin: 7px 0; font-size: 24px; letter-spacing: -.04em; }
+    .education-card p { color: var(--dark-muted); }
+    .education-tag { display: inline-flex; padding: 7px 12px; border-radius: 999px; background: #dfe8eb; color: #365b67; font-size: 12px; font-weight: 650; }
+    .credential-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .credential { min-height: 116px; padding: 18px 19px; border: 1px solid rgba(21,32,45,.12); border-radius: 17px; background: rgba(255,255,255,.66); }
+    .credential span { color: #4c7c89; font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .credential h3 { margin: 8px 0 5px; font-size: 15px; line-height: 1.3; letter-spacing: -.02em; }
+    .credential p { margin: 0; color: var(--dark-muted); font-size: 13px; line-height: 1.45; }
+    .about { background: #e8edef; color: var(--dark-ink); padding: 68px 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .about h2 { margin: 9px 0 14px; font-size: clamp(31px,4vw,48px); line-height: 1.05; letter-spacing: -.055em; }
+    .about p { color: var(--dark-muted); font-size: 17px; }
+    .values { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .value { padding: 17px; background: rgba(255,255,255,.58); border-radius: 15px; color: #314454; font-weight: 620; font-size: 14px; }
+    .contact { background: radial-gradient(ellipse at 78% 45%, rgba(37,92,121,.28), transparent 40%), #080b12; padding: 94px 0 75px; text-align: center; }
+    .contact h2 { max-width: 760px; margin: 14px auto; font-size: clamp(40px,6vw,72px); line-height: 1; letter-spacing: -.07em; }
+    .contact p { color: #aeb9ca; font-size: 18px; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 13px; margin-top: 29px; }
+    .footer { padding: 21px 0 28px; color: #8e9bae; border-top: 1px solid rgba(255,255,255,.09); font-size: 13px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; }
+      .hero-art { min-height: 370px; }
+      .intro-grid { grid-template-columns: 1fr 1.5fr; gap: 35px; }
+      .story-layout { gap: 34px; }
+      .cyber-grid,.credentials-grid { gap: 34px; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width: min(calc(100% - 36px),var(--max)); }
+      .nav { height: 64px; }
+      .brand { font-size: 14px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 63px; left: 0; right: 0; padding: 18px 22px 22px; background: rgba(8,11,18,.97); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 4px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 3px; }
+      .nav-contact { text-align: center; margin-top: 6px; }
+      .hero { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; padding: 58px 0 74px; gap: 35px; }
+      h1 { max-width: 570px; font-size: clamp(48px,13vw,76px); }
+      .hero-art { min-height: 330px; }
+      .hero-photo { border-radius: 22px; }
+      .scroll-note { bottom: 18px; }
+      .intro-band { padding: 56px 0; }
+      .intro-grid { grid-template-columns: 1fr; gap: 18px; }
+      .stat-row { grid-template-columns: 1fr; gap: 13px; }
+      .stat,.stat:first-child { border-left: 0; border-top: 1px solid rgba(21,32,45,.14); padding: 13px 0 0; }
+      .stat:first-child { border-top: 0; padding-top: 0; }
+      .story { padding: 68px 0 70px; }
+      .section-heading { margin-bottom: 34px; }
+      .story-layout { grid-template-columns: 1fr; gap: 22px; }
+      .story-visual { top: 72px; z-index: 2; height: 42vh; min-height: 270px; margin-bottom: 5px; }
+      .visual-frame { border-radius: 20px; }
+      .visual-overlay { inset: auto 18px 18px; }
+      .story-step { min-height: 55vh; padding: 28px 0; opacity: .72; }
+      .story-step.active { opacity: 1; }
+      .cyber-details { padding: 66px 0; }
+      .cyber-grid { grid-template-columns: 1fr; gap: 26px; }
+      .cyber-intro { position: static; }
+      .tool { grid-template-columns: 44px 1fr; gap: 12px; padding: 16px; }
+      .tool-mark { width: 40px; height: 40px; border-radius: 12px; }
+      .credentials { padding: 68px 0; }
+      .credentials-grid { grid-template-columns: 1fr; gap: 35px; }
+      .credential-list { grid-template-columns: 1fr; }
+      .credential { min-height: 0; }
+      .about { padding: 58px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 22px; }
+      .contact { padding: 72px 0 60px; }
+      .footer-row { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="César de la Cruz, inicio"><span class="brand-mark">CD</span><span>César de la Cruz</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menú</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#redes">Redes</a>
+        <a href="#ciberseguridad">Ciberseguridad</a>
+        <a href="#formacion">Formación</a>
+        <a class="nav-contact" href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-grid wrap">
+        <div>
+          <div class="eyebrow">Santiago, República Dominicana</div>
+          <h1>Conectividad que funciona.<br><span>Seguridad que evoluciona.</span></h1>
+          <p class="hero-copy">Soy César Miguel Ángel de la Cruz, técnico en redes y soporte de TI, con formación práctica en ciberseguridad y en camino a mitad de Ingeniería en Sistemas.</p>
+          <p class="hero-meta">Infraestructura · atención técnica · aprendizaje continuo</p>
+          <div class="actions">
+            <a class="button button-primary" href="#especialidades">Explorar mi trabajo</a>
+            <a class="button button-quiet" href="#contacto">Contactarme</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <figure class="hero-photo">
+            <img src="assets/network-infrastructure.png" alt="Conmutadores y fibra óptica en un centro de datos moderno" fetchpriority="high">
+            <figcaption class="photo-caption"><div><strong>Redes e infraestructura</strong><span>Diseñar. Conectar. Dar soporte.</span></div><span class="photo-index">01 / 03</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="scroll-note">Desliza para conocer mis áreas</div>
+    </section>
+    <section class="intro-band">
+      <div class="intro-grid wrap reveal">
+        <div><div class="eyebrow">Perfil</div><h2 class="intro-title">La tecnología funciona mejor cuando ayuda a las personas.</h2></div>
+        <p class="intro-text">Combino el trabajo técnico con una atención cercana: escucho, investigo el problema, explico los pasos con claridad y doy seguimiento. Mi experiencia abarca soporte a usuarios, instalación de redes, cableado estructurado y fibra óptica.</p>
+      </div>
+    </section>
+    <section class="stats" aria-label="Datos profesionales">
+      <div class="stat-row wrap">
+        <div class="stat"><strong>23 máquinas</strong><span>Completadas en laboratorios de Hack The Box</span></div>
+        <div class="stat"><strong>80 horas</strong><span>Curso de Ciberseguridad - Nivel Intermedio</span></div>
+        <div class="stat"><strong>B1/B2</strong><span>Inglés intermedio</span></div>
+      </div>
+    </section>
+    <section class="story" id="especialidades">
+      <div class="wrap">
+        <div class="section-heading reveal"><div class="eyebrow">Áreas de trabajo</div><h2>Una base sólida.<br>Una mirada que sigue creciendo.</h2><p>Desliza por cada área. La imagen cambia junto con el enfoque.</p></div>
+        <div class="story-layout">
+          <div class="story-visual" aria-label="Imágenes que cambian según el área seleccionada">
+            <div class="visual-frame">
+              <img class="scene-image active" data-image="0" src="assets/network-infrastructure.png" alt="Infraestructura de red con switches y conexiones de fibra" loading="lazy">
+              <img class="scene-image" data-image="1" src="assets/linux-security.png" alt="Estación de trabajo de ciberseguridad con terminal Linux" loading="lazy">
+              <img class="scene-image" data-image="2" src="assets/web-security-lab.png" alt="Laboratorio de seguridad web con tráfico de red y firewall" loading="lazy">
+              <div class="visual-overlay"><div class="visual-label" id="visual-label">Área 01</div><div class="visual-title" id="visual-title">Redes e infraestructura</div><div class="visual-progress" aria-hidden="true"><span class="progress-segment active"></span><span class="progress-segment"></span><span class="progress-segment"></span></div></div>
+            </div>
+          </div>
+          <div class="story-steps">
+            <article class="story-step active" id="redes" data-scene="0">
+              <div class="step-number">01 / REDES</div><h3>Conexiones estables, desde el cable hasta la configuración.</h3>
+              <p>Instalación y soporte de infraestructura de red con switches Dell N1524P y equipos Cisco. Trabajo con direccionamiento IP, segmentación mediante VLAN y gateways; también con cableado UTP, patch panels y fibra óptica.</p>
+              <div class="chips"><span class="chip">TCP/IP</span><span class="chip">VLAN</span><span class="chip">Switching</span><span class="chip">Fibra óptica</span></div>
+            </article>
+            <article class="story-step" data-scene="1">
+              <div class="step-number">02 / SOPORTE</div><h3>Resolver con método y explicar con claridad.</h3>
+              <p>Escucho el reporte, aclaro los síntomas, reviso conexiones y configuraciones, y ejecuto pruebas de conectividad. Si la solución requiere otro nivel, documento y escalo el caso, manteniendo informado al usuario.</p>
+              <div class="chips"><span class="chip">Troubleshooting L1</span><span class="chip">Atención a usuarios</span><span class="chip">Documentación</span></div>
+            </article>
+            <article class="story-step" id="ciberseguridad" data-scene="2">
+              <div class="step-number">03 / CIBERSEGURIDAD</div><h3>Aprendizaje práctico en laboratorios controlados.</h3>
+              <p>Estoy desarrollando mis conocimientos con Linux, análisis de redes y pruebas básicas de seguridad web. Practico en entornos autorizados y completo retos de Hack The Box para fortalecer mi metodología técnica.</p>
+              <div class="chips"><span class="chip">Linux CLI</span><span class="chip">Nmap</span><span class="chip">Burp Suite</span><span class="chip">Metasploit</span></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cyber-details">
+      <div class="cyber-grid wrap">
+        <div class="cyber-intro reveal"><div class="eyebrow">Práctica técnica</div><h2>Herramientas que uso para aprender seguridad.</h2><p>Mi experiencia en ciberseguridad se desarrolla en laboratorios educativos y máquinas vulnerables preparadas para la práctica.</p></div>
+        <div class="tool-list">
+          <article class="tool reveal"><div class="tool-mark">CLI</div><div><h3>Linux</h3><p>Nivel intermedio en la línea de comandos: navegación por directorios, gestión de archivos y ejecución de herramientas para tareas técnicas.</p></div></article>
+          <article class="tool reveal"><div class="tool-mark">N</div><div><h3>Nmap</h3><p>Descubrimiento de hosts, escaneo de puertos y revisión de servicios y versiones para conocer los equipos dentro de un laboratorio.</p></div></article>
+          <article class="tool reveal"><div class="tool-mark">B</div><div><h3>Burp Suite</h3><p>Interceptación y análisis de solicitudes y respuestas HTTP, con pruebas básicas de aplicaciones web en entornos de práctica.</p></div></article>
+          <article class="tool reveal"><div class="tool-mark">M</div><div><h3>Metasploit</h3><p>Búsqueda y configuración de módulos, y ejecución controlada de exploits en máquinas vulnerables de laboratorios autorizados.</p></div></article>
+          <article class="tool reveal"><div class="tool-mark">FG</div><div><h3>FortiGate</h3><p>Conocimientos básicos de firewall, filtrado y control del tráfico de red.</p></div></article>
+          <article class="tool reveal"><div class="tool-mark">HTB</div><div><h3>Hack The Box</h3><p>23 máquinas completadas, practicando reconocimiento y resolución progresiva de retos técnicos.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="credentials" id="formacion">
+      <div class="wrap">
+        <div class="section-heading reveal"><div class="eyebrow">Formación y cursos</div><h2>Aprender y aplicar, paso a paso.</h2><p>Formación académica y cursos que respaldan mi trabajo en redes, soporte y ciberseguridad.</p></div>
+        <div class="credentials-grid">
+          <div class="education-card reveal"><span class="education-tag">En curso · etapa intermedia</span><h3>Ingeniería en Sistemas</h3><p>Formación universitaria en curso. Santiago, República Dominicana.</p><p><strong>Idiomas</strong><br>Español nativo · Inglés intermedio (B1/B2)</p></div>
+          <div class="credential-list">
+            <article class="credential reveal"><span>Redes</span><h3>Cisco Networking Essentials</h3><p>Cisco Networking Academy</p></article>
+            <article class="credential reveal"><span>Soporte de TI</span><h3>Technical Support Fundamentals</h3><p>Google / Coursera · 2025</p></article>
+            <article class="credential reveal"><span>Infraestructura</span><h3>Cableado estructurado y fibra óptica</h3><p>Cano Academy</p></article>
+            <article class="credential reveal"><span>Seguridad de redes</span><h3>FCP - FortiGate 7.6 Administrator Self-Paced</h3><p>Fortinet · 2025</p></article>
+            <article class="credential reveal"><span>Ciberseguridad</span><h3>Fundamentos de ciberseguridad</h3><p>Google / Coursera · 2024</p></article>
+            <article class="credential reveal"><span>Gestión de riesgos</span><h3>Ve a lo seguro: Gestiona los riesgos de seguridad</h3><p>Google / Coursera · 2024</p></article>
+            <article class="credential reveal"><span>Ciberseguridad intermedia</span><h3>Ciberseguridad - Nivel Intermedio</h3><p>INDOTEL · BID · Cymetria Group · 80 horas · 2026</p></article>
+            <article class="credential reveal"><span>Gestión</span><h3>Gestión y manejo de personas</h3><p>OpenLearn · 8 horas · 2026</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about">
+      <div class="about-grid wrap reveal">
+        <div><div class="eyebrow">Cómo trabajo</div><h2>La parte técnica también es saber escuchar.</h2><p>Me gusta abordar los problemas con calma, comunicar los hallazgos de forma sencilla y colaborar para que las personas puedan continuar con su trabajo.</p></div>
+        <div class="values"><div class="value">Resolución metódica de problemas</div><div class="value">Comunicación respetuosa</div><div class="value">Responsabilidad y colaboración</div><div class="value">Curiosidad y aprendizaje continuo</div></div>
+      </div>
+    </section>
+    <section class="contact" id="contacto">
+      <div class="wrap reveal"><div class="eyebrow">Contacto profesional</div><h2>Conversemos sobre tecnología.</h2><p>Disponible para oportunidades en redes, soporte de TI y ciberseguridad junior.</p><div class="contact-links"><a class="button button-primary" href="mailto:cesardelacruzit640@gmail.com">Escribir por correo</a><a class="button button-quiet" href="tel:+18299681312">Llamar al (829) 968-1312</a></div></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="footer-row wrap"><span>© <span id="year">2026</span> César Miguel Ángel de la Cruz</span><span>Santiago, República Dominicana</span><a href="#inicio">Volver al inicio</a></div></footer>
+  <script>
+    (function () {
+      var menuButton = document.querySelector('.menu-toggle');
+      var nav = document.querySelector('.nav-links');
+      menuButton.addEventListener('click', function () {
+        var open = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('open', !open);
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+      var images = Array.from(document.querySelectorAll('.scene-image'));
+      var steps = Array.from(document.querySelectorAll('.story-step'));
+      var segments = Array.from(document.querySelectorAll('.progress-segment'));
+      var label = document.getElementById('visual-label');
+      var title = document.getElementById('visual-title');
+      var names = ['Redes e infraestructura', 'Soporte de TI', 'Ciberseguridad'];
+      function activate(index) {
+        images.forEach(function (image, i) { image.classList.toggle('active', i === index); });
+        steps.forEach(function (step, i) { step.classList.toggle('active', i === index); });
+        segments.forEach(function (segment, i) { segment.classList.toggle('active', i === index); });
+        label.textContent = 'Área 0' + (index + 1);
+        title.textContent = names[index];
+      }
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) activate(Number(entry.target.getAttribute('data-scene')));
+          });
+        }, { rootMargin: '-38% 0px -38% 0px', threshold: 0 });
+        steps.forEach(function (step) { observer.observe(step); });
+      }
+      var revealObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 }) : null;
+      document.querySelectorAll('.reveal').forEach(function (item) {
+        if (revealObserver) revealObserver.observe(item);
+        else item.classList.add('visible');
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }());
+  </script>
+</body>
+</html>
